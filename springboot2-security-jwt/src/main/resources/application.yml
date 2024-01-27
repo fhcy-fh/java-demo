@@ -1,0 +1,24 @@
+server:
+  port: 8080
+spring:
+  mvc:
+    static-path-pattern: /static/**
+  thymeleaf:
+    encoding: utf-8
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+  redis:
+    host: localhost
+    port: 6379
+logging:
+  level:
+    top.fhcy: debug
+
+
+jwt:
+  expire: 259200000
+
+rsa:
+  publicKey: G:/JavaDemo/springboot-security-jwt/key/publicKey.pub
+  privateKey: G:/JavaDemo/springboot-security-jwt/key/privateKey.key
