@@ -1,0 +1,8 @@
+# 客户端模式
+server:
+  port: 8080
+
+logging:
+  level:
+    top.fhcy: debug
+

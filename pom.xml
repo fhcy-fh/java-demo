@@ -23,6 +23,7 @@
         <module>springboot2-security-oauth2</module>
         <module>java-test</module>
         <module>springboot2-security-oauth2-2</module>
+        <module>springboot2-security-oauth2-3</module>
     </modules>
 
     <properties>
