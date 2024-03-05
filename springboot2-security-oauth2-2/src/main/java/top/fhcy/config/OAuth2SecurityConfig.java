@@ -1,16 +1,18 @@
 package top.fhcy.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import javax.annotation.Resource;
 
 @EnableWebSecurity
 public class OAuth2SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Resource
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     /**
@@ -26,5 +28,16 @@ public class OAuth2SecurityConfig extends WebSecurityConfigurerAdapter {
                 .password(passwordEncoder.encode("123456"))
                 .authorities("admin_role")
         ;
+    }
+
+    /**
+     *  password 密码模式要使用此认证管理器
+     * @return
+     * @throws Exception
+     */
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
 }

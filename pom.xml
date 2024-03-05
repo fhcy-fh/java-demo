@@ -22,6 +22,7 @@
         <module>springboot2-security-oauth2-jwt</module>
         <module>springboot2-security-oauth2</module>
         <module>java-test</module>
+        <module>springboot2-security-oauth2-2</module>
     </modules>
 
     <properties>

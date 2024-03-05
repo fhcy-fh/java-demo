@@ -1,10 +1,12 @@
 package top.fhcy.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 
 import javax.annotation.Resource;
 
@@ -42,5 +44,14 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
                 .autoApprove(false)
                 .redirectUris("http://www.baidu.com/")//客户端回调地址
         ;
+    }
+
+    @Resource
+    private AuthenticationManager authenticationManager;
+
+    @Override
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        //密码模式需要配置认证管理器
+        endpoints.authenticationManager(authenticationManager);
     }
 }
